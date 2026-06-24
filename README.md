@@ -361,3 +361,37 @@ two independent annotators applying the same rubric disagree most often
 on that exact class. Groq tended to over-call `analysis` for any comment
 containing technical vocabulary (tyre, sector, lap), while my hand labels
 required an actual reasoning chain.
+
+
+### 12.2 Confidence Calibration (ECE + reliability diagram)
+
+**Question:** when the model says "I'm 90% sure," is it actually right ~90% of the time?
+
+**Method.** For each of the 33 test comments I took the fine-tuned DistilBERT's
+softmax probability over {analysis, hot_take, reaction}, recorded the max
+probability (the model's confidence in its top prediction) and whether that
+prediction was correct. I binned predictions into 5 equal-width confidence bins
+from 0.33 (random guess for 3 classes) to 1.0, then computed Expected
+Calibration Error (ECE) as the n-weighted gap between mean confidence and
+empirical accuracy per bin. Diagram saved to `results/reliability.png`,
+raw bins to `results/calibration.json`.
+
+| Confidence bin | n | Mean confidence | Empirical accuracy |
+|---|---|---|---|
+{'bin': '[0.33,0.47)', 'n': 27, 'acc': 0.6296296296296297, 'conf': 0.40023711213359126}
+{'bin': '[0.47,0.60)', 'n': 5, 'acc': 0.4, 'conf': 0.49985185265541077}
+{'bin': '[0.60,0.73)', 'n': 1, 'acc': 0.0, 'conf': 0.6119428277015686}
+{'bin': '[0.73,0.87)', 'n': 0, 'acc': None, 'conf': None}
+{'bin': '[0.87,1.00)', 'n': 0, 'acc': None, 'conf': None}
+
+ECE = 0.221 ( n=33 )
+
+**Interpretation.** [Pick the line that matches your number and delete the others:]
+- ECE < 0.10 → "The model is reasonably well-calibrated; its stated confidence is a usable signal for downstream filtering (e.g. only auto-accept predictions above 0.85)."
+- 0.10 ≤ ECE < 0.20 → "The model is moderately miscalibrated. Confidence is directionally useful but should not be treated as a probability — a 0.80 prediction is not 80% likely to be right."
+- ECE ≥ 0.20 → "The model is poorly calibrated, almost certainly overconfident given the 33-comment test set and the class imbalance noted in §5. Confidence scores should not be exposed to end users as probabilities without temperature scaling on a held-out calibration set."
+
+**Caveat.** With n=33 some bins contain very few examples (see `n` column), so
+per-bin accuracy is noisy. ECE on a larger held-out set would be more trustworthy;
+this number is a directional signal, not a precise estimate.
+
