@@ -395,3 +395,22 @@ ECE = 0.221 ( n=33 )
 per-bin accuracy is noisy. ECE on a larger held-out set would be more trustworthy;
 this number is a directional signal, not a precise estimate.
 
+
+### 12.3 Model on Hugging Face Hub
+
+The fine-tuned DistilBERT classifier is published at:
+
+(https://huggingface.co/akura2/takemeter-distilbert
+
+Load it in three lines:
+
+from transformers import pipeline
+clf = pipeline("text-classification", model="akura2/takemeter-distilbert")
+clf("Honestly the new iPhone is just a rebranded last-gen model.")
+# [{'label': 'hot_take', 'score': 0.87}]
+
+### 12.4 Live Demo (Gradio Space)
+
+Try the model in browser 
+
+https://huggingface.co/spaces/akura2/takemeter-demo
