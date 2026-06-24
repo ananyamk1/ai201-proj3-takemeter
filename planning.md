@@ -174,8 +174,7 @@ Parsed with a regex that accepts `analysis|hot_take|reaction` case-insensitive
 and falls back to majority class on parse failure (logged separately).
 
 **Fine-tuned model — DistilBERT:**
-Base: `distilbert-base-uncased`. Split: 160 train / 40 test, stratified by
-label *and* by thread_id (a comment from a thread in train should not be
+Base: `distilbert-base-uncased`. Split: 154 train /33 test /33 val (70/15/15)%, stratified by label *and* by thread_id (a comment from a thread in train should not be
 matched by a comment from the same thread in test — keeps leakage honest).
 
 Hyperparameters and why:

@@ -1,0 +1,84 @@
+{
+  "n_examples": 33,
+  "second_annotator": "Groq llama-3.1-8b-instant (zero-shot, same rubric)",
+  "cohen_kappa": 0.3529411764705882,
+  "percent_agreement": 0.5757575757575758,
+  "per_class_kappa": {
+    "analysis": 0.18791946308724827,
+    "hot_take": 0.3355704697986577,
+    "reaction": 0.50561797752809
+  },
+  "n_disagreements": 14,
+  "disagreements": [
+    {
+      "text": "Always very good around Austria plus the Barcelona update seems to have brought Ferrari right to the front. I seem to remember Mercedes also struggling at Austr",
+      "human": "hot_take",
+      "second": "analysis"
+    },
+    {
+      "text": "Fair enough. I\u2019ve been every year since 2023 and the only other one I remember with wet weather was 2023 when it was raining off and on every day except the rac",
+      "human": "analysis",
+      "second": "reaction"
+    },
+    {
+      "text": "lol if Kimi had clear air and podium pace, who's to say he doesn't pull out more than 5 seconds? we all know he\u2019s a beast when he\u2019s in front.",
+      "human": "analysis",
+      "second": "hot_take"
+    },
+    {
+      "text": "Opens a topic about Liam describing Max in a nice way. Gets mad that the comments say nice things about Max. Next time just scroll by, mate.",
+      "human": "analysis",
+      "second": "reaction"
+    },
+    {
+      "text": "tldr it\u2019s about drivability and no performance update but the fact that they brought the upgrade to Barcelona immediately after the ADUO grant was a bit unexpec",
+      "human": "hot_take",
+      "second": "analysis"
+    },
+    {
+      "text": "Ow boy, this is the video with the engineer communication! I was watching the race with multiple screens and onboards opened and basically muted everything exce",
+      "human": "analysis",
+      "second": "reaction"
+    },
+    {
+      "text": "At least on Firefox there's a plugin that automatically makes sure you always visit old. I've literally not seen the new reddit in years",
+      "human": "hot_take",
+      "second": "reaction"
+    },
+    {
+      "text": "Merc has always won championships with car performance domination. Not because of their strategy calls. It's just that they mess up less than Ferrari that you d",
+      "human": "analysis",
+      "second": "hot_take"
+    },
+    {
+      "text": "fingers crossed. they have the most powerful engine on the grid, so I'm hoping they'll bring the best aero now that the car is at weight.",
+      "human": "analysis",
+      "second": "reaction"
+    },
+    {
+      "text": "I'd give everything for a Hamilton Vs Antonelli title fight, that'd be a generational battle",
+      "human": "reaction",
+      "second": "hot_take"
+    },
+    {
+      "text": "That's only on the assumption that Kimi got past Russell much earlier. What we know certainly is that he couldn't get past him till lap 61 and by then Hamilton ",
+      "human": "hot_take",
+      "second": "analysis"
+    },
+    {
+      "text": "ICE **is** the car\u2019s power. Less power in the ICE means less recharge, thus less deployment from electrical later on.",
+      "human": "reaction",
+      "second": "analysis"
+    },
+    {
+      "text": "I just want a fight for the win between Mercedes, Ferrari, Red Bull, and McLaren. It feels so possible this year",
+      "human": "reaction",
+      "second": "hot_take"
+    },
+    {
+      "text": "Yep. Performance wise is the best, in terms of reliability it isn't, but you can always work on reliability whereas you can only work on performance if you have",
+      "human": "hot_take",
+      "second": "analysis"
+    }
+  ]
+}
